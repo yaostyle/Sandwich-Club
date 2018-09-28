@@ -1,5 +1,9 @@
 # Sandwich Club Project Starter Code
 
+A final result of this app.
+
+![alt_text](https://pbs.twimg.com/media/DoM4A2AUYAE_4Hc.jpg:large)
+
 ## Project Overview
 In this project, you will complete the **Sandwich Club** app to
 show the details of each sandwich once it is selected.
@@ -17,10 +21,3 @@ Through this project, you will:
 - Practice JSON parsing to a model object
 - Design an activity layout
 - Populate all fields in the layout accordingly
-
-## How Do I Complete this Project?
-Download the [Sandwich Club app starter code.](https://github.com/udacity/sandwich-club-starter-code)
-
-Design the layout for the detail activity so the different elements
-display in a sensible way. Implement the JSON parsing in JsonUtils so it
-produces a Sandwich Object that can be used to populate the UI that you designed.
