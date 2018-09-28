@@ -36,6 +36,8 @@ public class JsonUtils {
                 for (int i = 0; i < alsoKnownAsArr.length(); i++) {
                     alsoKnownAsList.add(alsoKnownAsArr.getString(i));
                 }
+            } else {
+                alsoKnownAsList.add("N/A");
             }
 
             ArrayList<String> ingredientsList = new ArrayList<>();
@@ -43,6 +45,10 @@ public class JsonUtils {
                 for (int x = 0; x < ingredientsArr.length(); x++) {
                     ingredientsList.add(ingredientsArr.getString(x));
                 }
+            }
+
+            if (placeOfOriginString.isEmpty()) {
+                placeOfOriginString = "Unknow";
             }
 
             parsedSandwichData = new Sandwich(mainNameString
