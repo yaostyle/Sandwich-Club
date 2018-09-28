@@ -19,6 +19,8 @@
     <string name="json_key_description">description</string>
     <string name="json_key_image">image</string>
     <string name="json_key_ingredients">ingredients</string>
+    <string name="aka_na">N/A</string>
+    <string name="place_of_origin_unknown">Unknown</string>
 
     <string-array name="sandwich_names">
         <item>Ham and cheese sandwich</item>

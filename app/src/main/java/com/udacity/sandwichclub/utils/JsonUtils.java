@@ -52,7 +52,7 @@ public class JsonUtils {
                 }
             } else {
                 // If json array is empty, set a default value called N/A
-                alsoKnownAsList.add("N/A");
+                alsoKnownAsList.add(context.getString(R.string.aka_na));
             }
 
             // Create a new ArrayList for ingredient
@@ -66,7 +66,7 @@ public class JsonUtils {
 
             // If placeOfOrigin is empty, set a default value called Unknow
             if (placeOfOriginString.isEmpty()) {
-                placeOfOriginString = "Unknow";
+                placeOfOriginString = context.getString(R.string.place_of_origin_unknown);
             }
 
             // Gather all the data and set to parsedSandwichData
