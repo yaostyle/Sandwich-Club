@@ -1,59 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.udacity.sandwichclub.DetailActivity">
-
-    <ImageView
-        android:id="@+id/image_iv"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/sandwich_picture_content_description"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent"
+        android:background="#eaeaea"
+        tools:context="com.udacity.sandwichclub.DetailActivity">
 
-    <TextView
-        android:id="@+id/origin_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/image_iv"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:adjustViewBounds="true"
+            android:background="#eaeaea"
+            android:contentDescription="@string/sandwich_picture_content_description"
+            android:scaleType="centerCrop" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_also_known_as_label"
-        android:textStyle="bold" />
+        <TextView
+            android:layout_width="120dp"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="right"
+            android:background="#8C000000"
+            android:paddingTop="2dp"
+            android:paddingBottom="20dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textStyle="bold"
+            android:textSize="10sp"
+            android:textColor="@android:color/white"
+            android:text="@string/detail_place_of_origin_label"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_ingredients_label"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_place_of_origin"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="Taiwan"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="22dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:layout_gravity="right"
+            />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_place_of_origin_label"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tv_main_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:textSize="40sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="10dp"
+            android:textColor="#3a2a0d"
+            android:background="#80ffffff"
+            android:layout_marginTop="110dp"
+            android:text="name"/>
 
-    <TextView
-        android:id="@+id/description_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/detail_also_known_as_label"
+            android:layout_marginTop="240dp"
+            android:paddingTop="8dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="24dp"
+            android:textSize="10sp"
+            android:background="#8Cffffff"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/ingredients_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_also_known_as"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_marginTop="260dp"
+            android:textColor="@android:color/black"
+            android:text="aka...."/>
 
-    <TextView
-        android:id="@+id/also_known_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="122dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="310dp"
+            android:layout_marginRight="16dp"
+            android:background="#ffffff"
+            android:padding="16dp"
+            android:textSize="18sp"
+            android:text="@string/detail_ingredients_label"
+            android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail_description_label"
-        android:textStyle="bold" />
-</FrameLayout>
+        <TextView
+            android:id="@+id/tv_ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="360dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="............"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="430dp"
+            android:paddingLeft="16dp"
+            android:layout_marginTop="442dp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:textSize="18sp"
+            android:background="@android:color/white"
+            android:text="@string/detail_description_label"/>
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="490dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:textSize="18sp"
+            android:text="......."/>
+    </FrameLayout>
+</ScrollView>

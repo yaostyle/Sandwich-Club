@@ -1,18 +1,12 @@
 package com.udacity.sandwichclub.utils;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.util.Log;
-
 import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.content.Context;
 import java.util.ArrayList;
-import java.util.List;
 
 public class JsonUtils {
 
@@ -37,14 +31,14 @@ public class JsonUtils {
             String imageString              = sandwichJsonBaseObj.getString(KEY_IMAGE);
             JSONArray ingredientsArr        = sandwichJsonBaseObj.getJSONArray(KEY_INGREDIENTS);
 
-            ArrayList<String> alsoKnownAsList = new ArrayList<String>();
+            ArrayList<String> alsoKnownAsList = new ArrayList<>();
             if (alsoKnownAsArr.length() > 0) {
                 for (int i = 0; i < alsoKnownAsArr.length(); i++) {
                     alsoKnownAsList.add(alsoKnownAsArr.getString(i));
                 }
             }
 
-            ArrayList<String> ingredientsList = new ArrayList<String>();
+            ArrayList<String> ingredientsList = new ArrayList<>();
             if (ingredientsArr.length() > 0) {
                 for (int x = 0; x < ingredientsArr.length(); x++) {
                     ingredientsList.add(ingredientsArr.getString(x));
