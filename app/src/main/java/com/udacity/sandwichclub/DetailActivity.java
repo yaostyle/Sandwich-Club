@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,27 +89,11 @@ public class DetailActivity extends AppCompatActivity {
 
         // Concatenating aka list into a single string
         String akaList = "";
-        int akaDataCount = sandwichData.getAlsoKnownAs().size();
-        for (int i=0; i<akaDataCount; i++) {
-            akaList += sandwichData.getAlsoKnownAs().get(i);
-            // If current position is in between the list,
-            // add a comma for readability
-            if (i>0 && i<akaDataCount-1){
-                akaList += ", ";
-            }
-        }
+        akaList = TextUtils.join(", ", sandwichData.getAlsoKnownAs());
 
         // Concatenating ingredient list into a single string
         String ingredientList = "";
-        int ingCount = sandwichData.getIngredients().size();
-        for (int x=0; x<ingCount; x++) {
-            ingredientList += sandwichData.getIngredients().get(x);
-            // If current position is in between the list,
-            // add a comma for readability
-            if (x>0 && x<ingCount-1) {
-                ingredientList += ", ";
-            }
-        }
+        ingredientList = TextUtils.join(", ", sandwichData.getIngredients());
 
         // Set current data to the views
         mainNameTextView.setText(sandwichData.getMainName());
