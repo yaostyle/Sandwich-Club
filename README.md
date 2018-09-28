@@ -1,4 +1,4 @@
-# Sandwich Club Project Starter Code
+# Udacity AND: Project#1 - Sandwich Club Project 
 
 A final result of this app.
 
