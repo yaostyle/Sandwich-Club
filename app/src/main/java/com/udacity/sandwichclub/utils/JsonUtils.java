@@ -1,30 +1,31 @@
 package com.udacity.sandwichclub.utils;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
+import com.udacity.sandwichclub.R;
 import com.udacity.sandwichclub.model.Sandwich;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
 
-    private static final String TAG = "JsonUtils";
-
-    public static Sandwich parseSandwichJson(String json) {
+    public static Sandwich parseSandwichJson(String json, Context context) {
         Sandwich parsedSandwichData = new Sandwich();
 
-        final String KEY_MAIN_NAME          = "mainName";
-        final String KEY_NAME               = "name";
-        final String KEY_ALSO_KNOWN_AS      = "alsoKnownAs";
-        final String KEY_PLACE_OF_ORIGIN    = "placeOfOrigin";
-        final String KEY_DESCRIPTION        = "description";
-        final String KEY_IMAGE              = "image";
-        final String KEY_INGREDIENTS        = "ingredients";
-
+        final String KEY_MAIN_NAME          = context.getString(R.string.json_key_main_name);
+        final String KEY_NAME               = context.getString(R.string.json_key_name);
+        final String KEY_ALSO_KNOWN_AS      = context.getString(R.string.json_key_also_known_as);
+        final String KEY_PLACE_OF_ORIGIN    = context.getString(R.string.json_key_place_of_origin);
+        final String KEY_DESCRIPTION        = context.getString(R.string.json_key_description);
+        final String KEY_IMAGE              = context.getString(R.string.json_key_image);
+        final String KEY_INGREDIENTS        = context.getString(R.string.json_key_ingredients);
 
         try {
             JSONObject sandwichJsonBaseObj  = new JSONObject(json);
@@ -37,16 +38,15 @@ public class JsonUtils {
             JSONArray ingredientsArr        = sandwichJsonBaseObj.getJSONArray(KEY_INGREDIENTS);
 
             ArrayList<String> alsoKnownAsList = new ArrayList<String>();
-
-            if (alsoKnownAsArr.length() > 0 && alsoKnownAsArr != null) {
-                for (int i=0; i<alsoKnownAsArr.length(); i++) {
+            if (alsoKnownAsArr.length() > 0) {
+                for (int i = 0; i < alsoKnownAsArr.length(); i++) {
                     alsoKnownAsList.add(alsoKnownAsArr.getString(i));
                 }
             }
 
             ArrayList<String> ingredientsList = new ArrayList<String>();
-            if (ingredientsArr.length() > 0 && ingredientsArr != null) {
-                for (int x=0; x<ingredientsArr.length(); x++) {
+            if (ingredientsArr.length() > 0) {
+                for (int x = 0; x < ingredientsArr.length(); x++) {
                     ingredientsList.add(ingredientsArr.getString(x));
                 }
             }
@@ -58,18 +58,11 @@ public class JsonUtils {
                                                 , imageString
                                                 , ingredientsList);
 
-//            Log.d(TAG, "parseSandwichJson: mainName: "
-//                    + mainNameString
-//                    + "\n, AKA: " + alsoKnownAsArr.toString()
-//                    + "\n, origin: " + placeOfOriginString
-//                    + "\n, desc: " + descriptionString
-//                    + "\n, img: " + imageString
-//                    + "\n, ing: "+ ingredientsArr.toString() +"\n");
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         return parsedSandwichData;
     }
+
 }
