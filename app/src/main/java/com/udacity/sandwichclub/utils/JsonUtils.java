@@ -6,6 +6,8 @@ import com.udacity.sandwichclub.model.Sandwich;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonUtils {
@@ -15,53 +17,54 @@ public class JsonUtils {
     public static Sandwich parseSandwichJson(String json) {
         Sandwich parsedSandwichData = new Sandwich();
 
-        final String KEY_MAIN_NAME = "mainName";
-        final String KEY_NAME = "name";
-        final String KEY_ALSO_KNOWN_AS = "alsoKnownAs";
-        final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
-        final String KEY_DESCRIPTION = "description";
-        final String KEY_IMAGE = "image";
-        final String KEY_INGREDIENTS = "ingredients";
+        final String KEY_MAIN_NAME          = "mainName";
+        final String KEY_NAME               = "name";
+        final String KEY_ALSO_KNOWN_AS      = "alsoKnownAs";
+        final String KEY_PLACE_OF_ORIGIN    = "placeOfOrigin";
+        final String KEY_DESCRIPTION        = "description";
+        final String KEY_IMAGE              = "image";
+        final String KEY_INGREDIENTS        = "ingredients";
+
 
         try {
-            JSONObject sandwichJsonObj = new JSONObject(json);
-            JSONArray sandwichNameArr = sandwichJsonObj.getJSONArray("name");
-            String sandwichMainName = sandwichNameArr.getString(0);
+            JSONObject sandwichJsonBaseObj  = new JSONObject(json);
+            JSONObject sandwichJsonNamesObj = sandwichJsonBaseObj.getJSONObject(KEY_NAME);
+            String mainNameString           = sandwichJsonNamesObj.getString(KEY_MAIN_NAME);
+            JSONArray alsoKnownAsArr        = sandwichJsonNamesObj.getJSONArray(KEY_ALSO_KNOWN_AS);
+            String placeOfOriginString      = sandwichJsonBaseObj.getString(KEY_PLACE_OF_ORIGIN);
+            String descriptionString        = sandwichJsonBaseObj.getString(KEY_DESCRIPTION);
+            String imageString              = sandwichJsonBaseObj.getString(KEY_IMAGE);
+            JSONArray ingredientsArr        = sandwichJsonBaseObj.getJSONArray(KEY_INGREDIENTS);
 
-            List<String> sandwichAKAList = null;
+            ArrayList<String> alsoKnownAsList = new ArrayList<String>();
 
-            if (!sandwichNameArr.getString(1).isEmpty()) {
-                JSONArray sandwichAKA = sandwichJsonObj.getJSONArray("alsoKnownAs");
-                if (sandwichAKA.length() > 0 && sandwichAKA != null) {
-                    for (int i = 0; i <= sandwichAKA.length(); i++) {
-                        sandwichAKAList.add(sandwichAKA.getString(i));
-                    }
+            if (alsoKnownAsArr.length() > 0 && alsoKnownAsArr != null) {
+                for (int i=0; i<alsoKnownAsArr.length(); i++) {
+                    alsoKnownAsList.add(alsoKnownAsArr.getString(i));
                 }
             }
 
-            String sandwichPlaceOfOrigin = sandwichJsonObj.getString("placeOfOrigin");
-            String sandwichDescription = sandwichJsonObj.getString("description");
-            String sandwichImage = sandwichJsonObj.getString("image");
-            JSONArray sandwichIngredients = sandwichJsonObj.getJSONArray("ingredients");
-
-            List<String> sandwichIngList = null;
-
-            for (int x=0; x<=sandwichIngredients.length(); x++) {
-                sandwichIngList.add(sandwichIngredients.getString(x));
+            ArrayList<String> ingredientsList = new ArrayList<String>();
+            if (ingredientsArr.length() > 0 && ingredientsArr != null) {
+                for (int x=0; x<ingredientsArr.length(); x++) {
+                    ingredientsList.add(ingredientsArr.getString(x));
+                }
             }
 
-            Log.d(TAG, "--------- parseSandwichJson: mainName: " + sandwichMainName);
-            Log.d(TAG, "--------- parseSandwichJson: AKA: " + sandwichAKAList.toString());
-            Log.d(TAG, "--------- parseSandwichJson: descp: " + sandwichDescription);
-            Log.d(TAG, "--------- parseSandwichJson: image: " + sandwichImage);
-            Log.d(TAG, "--------- parseSandwichJson: ing: " + sandwichIngList.toString());
+            parsedSandwichData = new Sandwich(mainNameString
+                                                , alsoKnownAsList
+                                                , placeOfOriginString
+                                                , descriptionString
+                                                , imageString
+                                                , ingredientsList);
 
-            parsedSandwichData.setMainName(sandwichMainName);
-            parsedSandwichData.setAlsoKnownAs(sandwichAKAList);
-            parsedSandwichData.setPlaceOfOrigin(sandwichPlaceOfOrigin);
-            parsedSandwichData.setDescription(sandwichDescription);
-            parsedSandwichData.setImage(sandwichImage);
-            parsedSandwichData.setIngredients(sandwichIngList);
+//            Log.d(TAG, "parseSandwichJson: mainName: "
+//                    + mainNameString
+//                    + "\n, AKA: " + alsoKnownAsArr.toString()
+//                    + "\n, origin: " + placeOfOriginString
+//                    + "\n, desc: " + descriptionString
+//                    + "\n, img: " + imageString
+//                    + "\n, ing: "+ ingredientsArr.toString() +"\n");
 
         } catch (JSONException e) {
             e.printStackTrace();
